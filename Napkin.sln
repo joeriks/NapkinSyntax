@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.22310.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Napkin", "Napkin\Napkin.csproj", "{237D59FE-16B4-42D2-A845-0F7CFA28A45C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Napkin.Core", "Napkin.Core\Napkin.Core.csproj", "{00FB0381-19CE-446E-8549-E7CD6379625D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Napkin.Core.NewSyntaxTests", "Napkin.Core.NewSyntaxTests\Napkin.Core.NewSyntaxTests.csproj", "{41C9C9FE-647E-49E1-B7D2-1269F5D43E5D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C7D2D162-7DB4-4775-9EF6-5A0A077F6483}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +18,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{237D59FE-16B4-42D2-A845-0F7CFA28A45C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{237D59FE-16B4-42D2-A845-0F7CFA28A45C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{237D59FE-16B4-42D2-A845-0F7CFA28A45C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{237D59FE-16B4-42D2-A845-0F7CFA28A45C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{00FB0381-19CE-446E-8549-E7CD6379625D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{00FB0381-19CE-446E-8549-E7CD6379625D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00FB0381-19CE-446E-8549-E7CD6379625D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00FB0381-19CE-446E-8549-E7CD6379625D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41C9C9FE-647E-49E1-B7D2-1269F5D43E5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41C9C9FE-647E-49E1-B7D2-1269F5D43E5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41C9C9FE-647E-49E1-B7D2-1269F5D43E5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41C9C9FE-647E-49E1-B7D2-1269F5D43E5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

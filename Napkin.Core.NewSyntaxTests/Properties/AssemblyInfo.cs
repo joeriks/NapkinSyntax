@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Napkin")]
+[assembly: AssemblyTitle("Napkin.Core.NewSyntaxTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Napkin")]
+[assembly: AssemblyProduct("Napkin.Core.NewSyntaxTests")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("237d59fe-16b4-42d2-a845-0f7cfa28a45c")]
+[assembly: Guid("41c9c9fe-647e-49e1-b7d2-1269f5d43e5d")]
 
 // Version information for an assembly consists of the following four values:
 //
