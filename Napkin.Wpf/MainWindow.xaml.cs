@@ -35,7 +35,23 @@ namespace Napkin.Wpf
             textBox.TextChanged += TextBox_TextChanged;
             textBox2.TextChanged += TextBox2_TextChanged;
 
-            textBox2.Text = "var node = Require<NapkinPack>().Node();";
+            textBox.Text = @"Item Id=1
+    Name=Foo
+    Description=Fuu
+
+Item Id=2
+    Name=Bar
+
+    Item Id=201
+        Name=Baz
+
+Item
+    Id=3
+    Name=Bax";
+
+            textBox2.Text = @"var node = Require<NapkinPack>().Node();
+node.Children[2].Properties[""Name""]";
+            Execute();
 
         }
 
@@ -51,8 +67,8 @@ namespace Napkin.Wpf
                 textBox1.Text = result.ReturnValue.ToString();
             else
             {
-                if (result.CompileExceptionInfo != null) textBox1.Text = result.CompileExceptionInfo.ToString();
-                if (result.ExecuteExceptionInfo != null) textBox1.Text = result.ExecuteExceptionInfo.ToString();
+                if (result.CompileExceptionInfo != null) textBox1.Text = result.CompileExceptionInfo.SourceException.ToString();
+                if (result.ExecuteExceptionInfo != null) textBox1.Text = result.ExecuteExceptionInfo.SourceException.ToString();
             }
 
             host.Root.Executor.Terminate();
