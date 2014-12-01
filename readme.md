@@ -35,6 +35,7 @@ Long time idea that needed to be materialized. Not used in production just yet.
 
 	[...]
 
+Attributes are merged into Properties but might be handled separately if needed.
 
 Example using reflection to instantiate to objects:
 
@@ -65,33 +66,29 @@ Example using reflection to instantiate to objects:
     Assert.AreEqual("Bax", items.ElementAt(2).Name);
 
 
-Example of explicit syntax:
+Example of explicit syntax (with recursive selects):
 
-    var x = new Node(@"
-                        Node
-                            Name=Foo
-                            Id=2
-                        Node
-                            Name=Bar
-                            Id=1
-                            Node
-                                Name=Baz
-                                Id=3", new UnfoldSettings
-                                    {
-                                        EachHeaderHasTypeName = true,
-                                        Style = Style.Indent
-                                    });
+	var napkinDocument = new Node(@"
+	Node Attr=x
+		Name=Foo
+		Id=2
+	Node Attr=y
+		Name=Bar
+		Id=1
+		Node
+			Name=Baz
+			Id=3");
 
-    Func<Node, SomeNode> selector = null;
-    selector = new Func<Node, SomeNode>(t => new SomeNode
+
+    Func<Node, SomeNode> nodeSelector = null;
+    nodeSelector = new Func<Node, SomeNode>(t => new SomeNode
     {
-        Name = t.GetPropertyValue<string>("Name"),
-        Id = t.GetPropertyValue<string>("Id"),
-        Children = t.Children.Where(c => c.HeaderName == "Node").Select(selector)
+        Name = t.Properties["Name"],
+        Id = t.Properties["Id"],
+        Children = t.Children.Where(c => c.HeaderName == "Node").Select(nodeSelector)
     });
 
-    var nodes = x.Children.Where(c => c.HeaderName == "Node").Select(selector);
+    var nodes = napkinDocument.Children.Where(c => c.HeaderName == "Node").Select(nodeSelector);
 
     Assert.AreEqual(2, nodes.Count());
     Assert.AreEqual("3", nodes.ElementAt(1).Children.ElementAt(0).Id);
-
