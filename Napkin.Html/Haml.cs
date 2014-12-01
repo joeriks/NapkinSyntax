@@ -1,38 +1,27 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using System.Linq;
-using Napkin;
 using System.Text;
 
-namespace Napkin.Core.NewSyntaxTests
+namespace Napkin.Html
 {
-    [TestClass]
-    public class UnitTest1
+    public class Haml
     {
-        [TestMethod]
-        public void HamlishSyntax()
+        public string Render(string napkinDocument)
         {
-            var napkinDocument = @"
-
-    h1 Some header
-    p Then some text
-    div
-        p
-            And some enclosed
-            paragraphs.
-
-";
             var sb = new StringBuilder();
 
             Action<Node> writer = null;
             writer = new Action<Node>(n =>
             {
-                if (new[] { "h1", "p", "div" }.Contains(n.HeaderName))
+                if (new[] { "h1", "h2", "h3", "h4", "h5", "strong", "i", "b", "span", "p", "div" }.Contains(n.HeaderName))
                 {
                     if (n.Children.Any())
                     {
                         sb.AppendFormat(n.Header.HeaderIndentation() + "<{0}>" + Environment.NewLine, n.HeaderName);
-                        n.Children.ForEach(writer);
+                        
+                        foreach(var item in n.Children) writer(item);
+
                         sb.AppendFormat(n.Header.HeaderIndentation() + "</{0}>" + Environment.NewLine, n.HeaderName);
                     }
                     else
@@ -46,18 +35,10 @@ namespace Napkin.Core.NewSyntaxTests
                 }
             });
 
-            new Node(napkinDocument).Children.ForEach(writer);
+            var doc = new Node(napkinDocument);
+            foreach (var item in doc.Children) writer(item);
 
-            Assert.AreEqual(@"    <h1>Some header</h1>
-    <p>Then some text</p>
-    <div>
-        <p>
-            And some enclosed
-            paragraphs.
-        </p>
-    </div>
-", sb.ToString());
-
+            return sb.ToString();
 
         }
     }

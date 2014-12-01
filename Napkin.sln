@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.md = readme.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Napkin.Wpf", "Napkin.Wpf\Napkin.Wpf.csproj", "{4692F4D3-AFD5-457B-ABFF-A0EB672FC883}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Napkin.Html", "Napkin.Html\Napkin.Html.csproj", "{703423DE-CBEA-46C6-8702-87D398AAC57E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +30,14 @@ Global
 		{41C9C9FE-647E-49E1-B7D2-1269F5D43E5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41C9C9FE-647E-49E1-B7D2-1269F5D43E5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41C9C9FE-647E-49E1-B7D2-1269F5D43E5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4692F4D3-AFD5-457B-ABFF-A0EB672FC883}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4692F4D3-AFD5-457B-ABFF-A0EB672FC883}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4692F4D3-AFD5-457B-ABFF-A0EB672FC883}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4692F4D3-AFD5-457B-ABFF-A0EB672FC883}.Release|Any CPU.Build.0 = Release|Any CPU
+		{703423DE-CBEA-46C6-8702-87D398AAC57E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{703423DE-CBEA-46C6-8702-87D398AAC57E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{703423DE-CBEA-46C6-8702-87D398AAC57E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{703423DE-CBEA-46C6-8702-87D398AAC57E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
