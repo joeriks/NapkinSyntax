@@ -39,6 +39,16 @@ namespace Napkin
             }
             return new KeyValuePair<string, string>();
         }
+
+        public string HeaderBody()
+        {
+            if (IsEmpty()) return "";
+            return Content.Trim().Split(new[] { ' ' }, 2)[1];
+        }
+        public string HeaderIndentation()
+        {
+            return Content.Substring(0, Content.Length - Content.TrimStart().Length);
+        }
     }
 
 }

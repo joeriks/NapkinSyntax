@@ -77,6 +77,14 @@ namespace Napkin
             }
         }
 
+        public string HeaderBody
+        {
+            get
+            {
+                return Header.HeaderBody();
+            }
+        }
+
         private List<Node> children;
         public List<Node> Children
         {

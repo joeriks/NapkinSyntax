@@ -55,12 +55,16 @@
     <Compile Include="BasicTests_HandlingSyntaxProblems.cs" />
     <Compile Include="BasicTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Napkin.Core\Napkin.Core.csproj">
       <Project>{00fb0381-19ce-446e-8549-e7cd6379625d}</Project>
       <Name>Napkin.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TextFile1.txt" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
