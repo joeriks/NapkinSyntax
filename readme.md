@@ -1,7 +1,10 @@
-##Napkin Syntax deserializer
+##Napkin Syntax parser and deserializer
 
 The "Napkin Syntax" is my version of an "as simple as possible human readable object notation", where a document is described
 with nodes in new lines, and their properties indented one level. It also supports hierarchies of items.
+
+The syntax parser creates a napkin node tree, which can be used directly with linq to create objects, or use the build in small 
+reflection based magic instantiator (see below).
 
 **Why?**
 Because no one likes to create object trees with more syntax than necessary.
@@ -33,7 +36,7 @@ Long time idea that needed to be materialized. Not used in production just yet.
 	[...]
 
 
-Example from one of the tests:
+Example using reflection to instantiate to objects:
 
     using Napkin;
 	
@@ -60,3 +63,35 @@ Example from one of the tests:
 
     Assert.AreEqual(201, itemWithId2.Children.SingleOrDefault().Id);
     Assert.AreEqual("Bax", items.ElementAt(2).Name);
+
+
+Example of explicit syntax:
+
+    var x = new Node(@"
+                        Node
+                            Name=Foo
+                            Id=2
+                        Node
+                            Name=Bar
+                            Id=1
+                            Node
+                                Name=Baz
+                                Id=3", new UnfoldSettings
+                                    {
+                                        EachHeaderHasTypeName = true,
+                                        Style = Style.Indent
+                                    });
+
+    Func<Node, SomeNode> selector = null;
+    selector = new Func<Node, SomeNode>(t => new SomeNode
+    {
+        Name = t.GetPropertyValue<string>("Name"),
+        Id = t.GetPropertyValue<string>("Id"),
+        Children = t.Children.Where(c => c.HeaderName == "Node").Select(selector)
+    });
+
+    var nodes = x.Children.Where(c => c.HeaderName == "Node").Select(selector);
+
+    Assert.AreEqual(2, nodes.Count());
+    Assert.AreEqual("3", nodes.ElementAt(1).Children.ElementAt(0).Id);
+
