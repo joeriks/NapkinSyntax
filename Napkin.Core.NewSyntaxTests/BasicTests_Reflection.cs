@@ -95,7 +95,7 @@ Node
                                         Id=3
                                         Name=Bax";
 
-            var items = napkinDocument.Serialize<Item>();
+            var items = napkinDocument.Deserialize<Item>();
             Assert.AreEqual(3, items.Count());
 
             var itemWithId2 = items.SingleOrDefault(t => t.Id == 2);

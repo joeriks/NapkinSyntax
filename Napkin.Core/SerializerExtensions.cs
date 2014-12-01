@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Napkin
 {
-    public static class SerializeExtensions
+    public static class DeserializeExtensions
     {
-        public static IEnumerable<T> Serialize<T>(this string document)
+        public static IEnumerable<T> Deserialize<T>(this string document)
         {
             var node = new Node(document);
             return node.As<T>();
