@@ -24,7 +24,7 @@
                   VerticalAlignment="Stretch" 
                   Grid.Column="1" ResizeBehavior="PreviousAndNext"
                   Width="5" Background="#FFBCBCBC"/>
-        <TextBox x:Name="textBox1" 
+        <TextBox x:Name="textBox1" TextWrapping="Wrap"
                  AcceptsReturn="True"
                  Grid.Column="2"/>
         <GridSplitter HorizontalAlignment="Right" 

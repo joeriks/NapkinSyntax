@@ -43,7 +43,9 @@ namespace Napkin
         public string HeaderBody()
         {
             if (IsEmpty()) return "";
-            return Content.Trim().Split(new[] { ' ' }, 2)[1];
+            if (Content.Trim().Contains(" "))
+                return Content.Trim().Split(new[] { ' ' }, 2)[1];
+            return "";
         }
         public string HeaderIndentation()
         {
