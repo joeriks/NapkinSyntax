@@ -18,6 +18,9 @@ Yes
 **Test coverage?**
 Some
 
+**Try it with the WPF-app with built in ScriptCs transformation scripting**
+![WPF](/Documentation/wpfimage.png)
+
 **Status?**
 Long time idea that needed to be materialized. Not used in production just yet.
 
