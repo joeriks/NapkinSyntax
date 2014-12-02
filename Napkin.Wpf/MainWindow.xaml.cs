@@ -28,14 +28,18 @@ namespace Napkin.Wpf
 
         public ScriptServices Root { get; private set; }
 
+        private string napkinDocument = "napkinDoc.txt";
+        private string napkinTransformScript = "napkinTransform.csx";
+
         public MainWindow()
         {
             InitializeComponent();
 
-            textBox.TextChanged += TextBox_TextChanged;
-            textBox2.TextChanged += TextBox2_TextChanged;
-
-            textBox.Text = @"Item Id=1
+            if (File.Exists(napkinDocument))
+                textBox.Text = File.ReadAllText(napkinDocument);
+            else
+            {
+                textBox.Text = @"Item Id=1
     Name=Foo
     Description=Fuu
 
@@ -48,15 +52,44 @@ Item Id=2
 Item
     Id=3
     Name=Bax";
+            }
 
-            textBox2.Text = @"var node = Require<NapkinPack>().Node();
+            if (File.Exists(napkinTransformScript))
+                textBox2.Text = File.ReadAllText(napkinTransformScript);
+            else
+            {
+                textBox2.Text = @"var node = Require<NapkinPack>().Node();
 node.Children[2].Properties[""Name""]";
+            }
+
+            textBox.TextChanged += TextBox_TextChanged;
+            textBox2.TextChanged += TextBox2_TextChanged;
+
             Execute();
 
         }
 
+        private bool isExecuting;
+        private bool queuedExecution;
+
+        private void saveDocuments()
+        {
+            System.IO.File.WriteAllText(napkinDocument, textBox.Text);
+            System.IO.File.WriteAllText(napkinTransformScript, textBox2.Text);
+        }
+
         private void Execute()
         {
+            if (isExecuting)
+            {
+                queuedExecution = true;
+                return;
+            }
+            isExecuting = true;
+
+            // save
+            saveDocuments();
+
             var host = new ScriptCsHost();
             host.Root.Executor.Initialize(new[] { "System", "System.Linq" }, new[] { new NapkinSyntaxScriptPack(textBox.Text) });
             host.Root.Executor.AddReferenceAndImportNamespaces(new[] { typeof(IScriptExecutor), typeof(Napkin.Node), typeof(Napkin.Wpf.NapkinPack) });
@@ -72,6 +105,13 @@ node.Children[2].Properties[""Name""]";
             }
 
             host.Root.Executor.Terminate();
+
+            isExecuting = false;
+            if (queuedExecution)
+            {
+                queuedExecution = false;
+                Execute();
+            }
 
         }
 

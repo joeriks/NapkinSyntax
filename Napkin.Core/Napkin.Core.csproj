@@ -42,6 +42,7 @@
     <Compile Include="Node.cs" />
     <Compile Include="RowInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DeserializerExtensions.cs" />
     <Compile Include="SerializerExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
